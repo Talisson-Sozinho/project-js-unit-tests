@@ -85,10 +85,38 @@ function orderFromMenu(request) {
   restaurant.consumption.push(request);
 }
 
+function groupConsumptionCalculator(itemsMenu, itemsMenuValue, consumption) {
+  let priceConsumedByGroup = 0;
+  for (let itemConsumed of consumption) {
+    if (itemsMenu.includes(itemConsumed)) {
+      priceConsumedByGroup += itemsMenuValue[itemsMenu.indexOf(itemConsumed)];
+    }
+  }
+  return priceConsumedByGroup;
+}
+
+function calculateConsumptionValue(menuOptions, consumption) {
+  let totalPriceConsumed = 0;
+  for (let group of menuOptions) {
+    const itemsMenu = Object.keys(group);
+    const itemsMenuValue = Object.values(group);
+    totalPriceConsumed += groupConsumptionCalculator(itemsMenu, itemsMenuValue, consumption);
+  }
+  return totalPriceConsumed;
+}
+
+function payment() {
+  const menuOptions = Object.values(restaurant.fetchMenu());
+  const consumed = restaurant.consumption;
+  const priceConsumed = calculateConsumptionValue(menuOptions, consumed);
+  return priceConsumed * 1.1;
+}
+
 const createMenu = (menu) => {
   restaurant.fetchMenu = () => menu;
   restaurant.consumption = [];
   restaurant.order = orderFromMenu;
+  restaurant.pay = payment;
   return restaurant;
 };
 

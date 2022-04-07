@@ -129,7 +129,11 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     testePrice.order('coxinha');
     testePrice.order('agua');
     testePrice.order('coxinha');
-    expect(testePrice.pay()).toBeCloseTo(11.7);
+    expect(testePrice.pay()).toBeCloseTo(12.87);
+    testePrice.order('agua');
+    expect(testePrice.pay()).toBeCloseTo(17.16);
+    testePrice.order('cerveja');
+    expect(testePrice.pay()).toBeCloseTo(24.75);
     // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
     // ```
 
