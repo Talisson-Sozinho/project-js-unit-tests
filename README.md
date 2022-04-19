@@ -8,9 +8,7 @@ Projeto feito por mim ao final do bloco 7 do curso da [trybe](https://www.betryb
 
 <img src='https://user-images.githubusercontent.com/79944385/163918412-ef3b8b16-444a-427b-b13b-d07ff79866a3.png'>
 
-## Habilidades
-
-Nesse projeto, você será capaz de:
+## Habilidades usadas
 
 - Escrever testes unitários para funções utilizando o módulo Jest do NodeJS para verificar o correto funcionamento dessas funções;
 - A partir de testes já implementados, escrever funções de forma que elas atendam aos testes propostos;
